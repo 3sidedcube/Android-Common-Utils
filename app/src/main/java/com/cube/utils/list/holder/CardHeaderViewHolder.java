@@ -3,10 +3,9 @@ package com.cube.utils.list.holder;
 import android.view.ViewGroup;
 
 /**
- * // TODO: Add class description
+ * Simple view holder for displaying a header to a card in a list
  *
  * @author Matt Allen
- * @documentation // TODO Reference flow doc
  * @project Utils
  */
 public class CardHeaderViewHolder extends ViewHolder<Object>
