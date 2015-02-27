@@ -4,6 +4,7 @@ import android.view.ViewGroup;
 
 import com.cube.utils.view.holder.CardFooterViewHolder;
 import com.cube.utils.view.holder.CardHeaderViewHolder;
+import com.cube.utils.view.holder.DividerViewHolder;
 import com.cube.utils.view.holder.ViewHolder;
 
 import java.lang.reflect.Constructor;
@@ -77,10 +78,11 @@ public class ViewHolderManager
 	 */
 	public ViewHolderManager(int expectedViewHolders)
 	{
-		mViewHoldersByObject = new HashMap<>(expectedViewHolders + 2);
-		mViewHoldersByItemType = new HashMap<>(expectedViewHolders + 2);
+		mViewHoldersByObject = new HashMap<>(expectedViewHolders + 3);
+		mViewHoldersByItemType = new HashMap<>(expectedViewHolders + 3);
 		registerItemType(ListAdapter.GroupingItem.GROUP_HEADER, CardHeaderViewHolder.class);
 		registerItemType(ListAdapter.GroupingItem.GROUP_FOOTER, CardFooterViewHolder.class);
+		registerItemType(ListAdapter.GroupingItem.GROUP_DIVIDER, DividerViewHolder.class);
 	}
 
 	/**

@@ -25,6 +25,7 @@ public class ListAdapter extends Adapter<ViewHolder<?>>
 	{
 		GROUP_HEADER,
 		GROUP_FOOTER,
+		GROUP_DIVIDER,
 	}
 
 	private List<Object> mObjects = new ArrayList<>();
@@ -122,8 +123,32 @@ public class ListAdapter extends Adapter<ViewHolder<?>>
 	 */
 	public void addItems(Iterable<?> items)
 	{
+		addItems(items, false);
+	}
+
+	/**
+	 * Adds the items in the order they are encountered.
+	 *
+	 * @param items
+	 * 		The items to be added, none of which can be null.
+	 * @param addDividers
+	 * 		If true, a {@link GroupingItem}.GROUP_DIVIDER will be placed between each pair of consecutive items.
+	 * @throws java.lang.IllegalArgumentException
+	 * 		If any item is null or does not have an associated ViewHolder.
+	 */
+	public void addItems(Iterable<?> items, boolean addDividers)
+	{
+		boolean firstItem = true;
 		for (Object item : items)
 		{
+			if (addDividers && !firstItem)
+			{
+				addItem(GroupingItem.GROUP_DIVIDER);
+			}
+			else
+			{
+				firstItem = false;
+			}
 			addItem(item);
 		}
 	}
@@ -147,7 +172,7 @@ public class ListAdapter extends Adapter<ViewHolder<?>>
 		if (item instanceof Iterable)
 		{
 			addItem(GroupingItem.GROUP_HEADER);
-			addItems((Iterable<?>)item);
+			addItems((Iterable<?>)item, true);
 			addItem(GroupingItem.GROUP_FOOTER);
 		}
 		else
