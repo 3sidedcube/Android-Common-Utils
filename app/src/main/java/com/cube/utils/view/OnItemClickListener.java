@@ -1,4 +1,6 @@
-package com.cube.utils.list;
+package com.cube.utils.view;
+
+import com.cube.utils.view.holder.ViewHolder;
 
 /**
  * A simple item click interface that can be applied to a RecyclerView and respond to items
@@ -9,5 +11,5 @@ package com.cube.utils.list;
  */
 public interface OnItemClickListener
 {
-	public void onItemClick(int position, Object obj);
+	void onItemClick(int position, Object obj, ViewHolder<?> viewHolder);
 }
